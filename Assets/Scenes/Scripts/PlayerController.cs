@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rayRange = 100;
+        _rayRange = 1000;
         _targetPos = transform.position;
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_targetPos);
@@ -22,11 +22,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            Debug.Log("mouse down");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, _rayRange))
             {
+                Debug.Log("hit");
                 _targetPos= hit.point;
                 _agent.SetDestination(_targetPos);
             }
