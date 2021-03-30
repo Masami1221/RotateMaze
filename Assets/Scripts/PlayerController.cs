@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     private float _rayRange;
     private Vector3 _targetPos;
     private NavMeshAgent _agent;
-    // Start is called before the first frame update
+    public bool item;
+    
     void Start()
     {
         _rayRange = 1000;
@@ -16,7 +17,14 @@ public class PlayerController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.SetDestination(_targetPos);
     }
-
+    void OnTriggerEnter (Collider get)
+    {
+        if (get.CompareTag ("Item"))
+        {
+            Destroy(get.gameObject);
+            item = true;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,5 +41,9 @@ public class PlayerController : MonoBehaviour
                 _agent.SetDestination(_targetPos);
             }
         }
+    }
+    public bool getItem()
+    {
+        return item;
     }
 }
