@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         _rayRange = 1000;
         _targetPos = transform.position;
         _agent = GetComponent<NavMeshAgent>();
-        _agent.SetDestination(_targetPos);
+        //_agent.SetDestination(_targetPos);
     }
     void OnTriggerEnter (Collider get)
     {
