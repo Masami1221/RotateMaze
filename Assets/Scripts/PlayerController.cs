@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 _targetPos;
     private NavMeshAgent _agent;
     public bool item;
+    public GameObject letterUI;
     
     void Start()
     {
         _rayRange = 1000;
         _targetPos = transform.position;
         _agent = GetComponent<NavMeshAgent>();
-        //_agent.SetDestination(_targetPos);
-    }
+        //_agent.SetDegstination(_targetPos);
+    }    
+        
     void OnTriggerEnter (Collider get)
     {
         if (get.CompareTag ("Item"))
@@ -24,8 +27,23 @@ public class PlayerController : MonoBehaviour
             Destroy(get.gameObject);
             item = true;
         }
+        //手紙を拾う処理
+        //当たったのがletterだったら
+        else if (get.CompareTag ("letter"))
+        {
+            //letterを消して、UIを表示する
+            Debug.Log("pick up the letter");
+            Destroy(get.gameObject);
+            letterUI.SetActive(true);
+            //クリックしたら非表示にする
+            if (Input.GetMouseButtonDown(0))
+            {
+                letterUI.SetActive(false);
+            }
+        }
     }
-    // Update is called once per frame
+    
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))

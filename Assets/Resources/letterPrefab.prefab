@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5369230068478153840}
   - component: {fileID: 7883446716369494202}
   m_Layer: 0
-  m_Name: letter
-  m_TagString: Untagged
+  m_Name: letterPrefab
+  m_TagString: letter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

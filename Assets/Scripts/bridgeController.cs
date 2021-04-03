@@ -24,12 +24,14 @@ public class bridgeController : MonoBehaviour
         this.part3 = GameObject.Find("bridge3");
         this.part4 = GameObject.Find("bridge4");
         this.part5 = GameObject.Find("bridge5");
+        //this.part1.transform.DOScalse(new Vector3(0,0,0),0); 
+        //小さくしておいて橋を動かすときに大きくする。ここで0にしておくとエラーになります。
     }
 
     // Update is called once per frame
     void Update()
     {    
-
+        
     }
     //当たり判定をチェックする
     void OnTriggerEnter(Collider other)
@@ -48,6 +50,7 @@ public class bridgeController : MonoBehaviour
             //3.持っていたらオブジェクトを動かす
             Debug.Log("Go ahead");
             this.part1.transform.DOLocalMove(new Vector3(20.27f,-8.88f, -18.94f), 1f);
+            //this.part1.transform.DOScalse(new Vector3(200f,120f,20f),1f); 元の大きさにする。
             this.part2.transform.DOLocalMove(new Vector3(24.27f,-8.88f, -18.94f), 1.5f);
             this.part3.transform.DOLocalMove(new Vector3(28.27f,-8.88f, -18.94f), 2f);
             this.part4.transform.DOLocalMove(new Vector3(32.27f,-8.88f, -18.94f), 2.5f);
