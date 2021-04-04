@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class bridgeController : MonoBehaviour
 {
     public bool item = false;
+    //[SerializeField] private Transform _parentTransform;
     GameObject part1;
     GameObject part2;
     GameObject part3;
@@ -24,8 +25,12 @@ public class bridgeController : MonoBehaviour
         this.part3 = GameObject.Find("bridge3");
         this.part4 = GameObject.Find("bridge4");
         this.part5 = GameObject.Find("bridge5");
-        //this.part1.transform.DOScalse(new Vector3(0,0,0),0); 
-        //小さくしておいて橋を動かすときに大きくする。ここで0にしておくとエラーになります。
+        this.part1.transform.DOScale(new Vector3(0,0,0),0);
+        this.part2.transform.DOScale(new Vector3(0,0,0),0);
+        this.part3.transform.DOScale(new Vector3(0,0,0),0);
+        this.part4.transform.DOScale(new Vector3(0,0,0),0);
+        this.part5.transform.DOScale(new Vector3(0,0,0),0); 
+        //小さくしておいて橋を動かすときに大きくする
     }
 
     // Update is called once per frame
@@ -50,11 +55,15 @@ public class bridgeController : MonoBehaviour
             //3.持っていたらオブジェクトを動かす
             Debug.Log("Go ahead");
             this.part1.transform.DOLocalMove(new Vector3(20.27f,-8.88f, -18.94f), 1f);
-            //this.part1.transform.DOScalse(new Vector3(200f,120f,20f),1f); 元の大きさにする。
+            this.part1.transform.DOScale(new Vector3(2f,4f,2f),1f); //元の大きさにする。
             this.part2.transform.DOLocalMove(new Vector3(24.27f,-8.88f, -18.94f), 1.5f);
+            this.part2.transform.DOScale(new Vector3(2f,4f,2f),1.5f);
             this.part3.transform.DOLocalMove(new Vector3(28.27f,-8.88f, -18.94f), 2f);
+            this.part3.transform.DOScale(new Vector3(2f,4f,2f),2f);
             this.part4.transform.DOLocalMove(new Vector3(32.27f,-8.88f, -18.94f), 2.5f);
+            this.part4.transform.DOScale(new Vector3(2f,4f,2f),2.5f);
             this.part5.transform.DOLocalMove(new Vector3(36.27f,-8.88f, -18.94f), 3f);
+            this.part5.transform.DOScale(new Vector3(2f,4f,2f),3f);
             //GetComponent<NavMeshSurface> ().Bake ();
              //_surface.BuildNavMesh();
         }
