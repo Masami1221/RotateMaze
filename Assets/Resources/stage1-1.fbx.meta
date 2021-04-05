@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: d328b01ed131d43aabf9d7323f0a1b6b
+guid: f5c4f8f8be95a41d180df0153c8a6fa3
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Diamond.001
+    second: {fileID: 2100000, guid: 2302bfaa1b4ce445cae55a15b0f39889, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 804320f3a07ca429a806ad7ac373dd84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material01.001
+    second: {fileID: 2100000, guid: ec522bdce65f3431abb85fc6b14d9f63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 601287692a970449da29749c63e36443, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

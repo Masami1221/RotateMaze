@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.AI;
+//using UnityEngine.AI;
 
 public class bridgeController : MonoBehaviour
 {
@@ -13,8 +13,9 @@ public class bridgeController : MonoBehaviour
     GameObject part3;
     GameObject part4;
     GameObject part5;
-    [SerializeField]
-    private NavMeshSurface _surface;
+    
+    //public GameObject surface;
+    //Gameobject navMeshSurface;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class bridgeController : MonoBehaviour
         this.part4.transform.DOScale(new Vector3(0,0,0),0);
         this.part5.transform.DOScale(new Vector3(0,0,0),0); 
         //小さくしておいて橋を動かすときに大きくする
+        //navMeshSurface = surface.GetComponent<NavMeshSurface>();
     }
 
     // Update is called once per frame
@@ -54,18 +56,18 @@ public class bridgeController : MonoBehaviour
         {
             //3.持っていたらオブジェクトを動かす
             Debug.Log("Go ahead");
-            this.part1.transform.DOLocalMove(new Vector3(20.27f,-8.88f, -18.94f), 1f);
+            this.part1.transform.DOLocalMove(new Vector3(0.157f,0.096f, -4.496f), 1f);
             this.part1.transform.DOScale(new Vector3(2f,4f,2f),1f); //元の大きさにする。
-            this.part2.transform.DOLocalMove(new Vector3(24.27f,-8.88f, -18.94f), 1.5f);
-            this.part2.transform.DOScale(new Vector3(2f,4f,2f),1.5f);
-            this.part3.transform.DOLocalMove(new Vector3(28.27f,-8.88f, -18.94f), 2f);
-            this.part3.transform.DOScale(new Vector3(2f,4f,2f),2f);
-            this.part4.transform.DOLocalMove(new Vector3(32.27f,-8.88f, -18.94f), 2.5f);
-            this.part4.transform.DOScale(new Vector3(2f,4f,2f),2.5f);
-            this.part5.transform.DOLocalMove(new Vector3(36.27f,-8.88f, -18.94f), 3f);
-            this.part5.transform.DOScale(new Vector3(2f,4f,2f),3f);
-            //GetComponent<NavMeshSurface> ().Bake ();
-             //_surface.BuildNavMesh();
+            this.part2.transform.DOLocalMove(new Vector3(0.197f,0.096f, -4.496f), 1.3f);
+            this.part2.transform.DOScale(new Vector3(2f,4f,2f),1.3f);
+            this.part3.transform.DOLocalMove(new Vector3(0.237f,0.096f, -4.496f), 1.6f);
+            this.part3.transform.DOScale(new Vector3(2f,4f,2f),1.6f);
+            this.part4.transform.DOLocalMove(new Vector3(0.277f,0.096f, -4.496f), 1.9f);
+            this.part4.transform.DOScale(new Vector3(2f,4f,2f),1.9f);
+            this.part5.transform.DOLocalMove(new Vector3(0.317f,0.096f, -4.496f), 2.2f);
+            this.part5.transform.DOScale(new Vector3(2f,4f,2f),2.2f);
+            //surface.BuildNavMesh();
+            
         }
     }
 }
