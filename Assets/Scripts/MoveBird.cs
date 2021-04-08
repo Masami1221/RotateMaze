@@ -18,11 +18,12 @@ public class MoveBird : MonoBehaviour
         .OnComplete(() => {
             Debug.Log("letter");
            // 手紙を生成する
-           GameObject letter = Instantiate(letterPrefab,new Vector3 (12f,0,33f), Quaternion.Euler (-90f,0,0)) as GameObject;
+           GameObject letter = Instantiate(letterPrefab, transform.position, Quaternion.Euler (-90f,0,0), transform.parent) as GameObject;
            //letter.transform.position = new Vector3(12f,0f,33f);//鳥が手紙を落とす位置で生成する
            // 上記で作った手紙をDoTweenで指定の場所に動かす
-           letter.transform.DOLocalMove(new Vector3(0f,22.5f,-8.67f), 4f);
+           letter.transform.DOLocalMove(new Vector3(12.6f,-21.9f,36.5f), 4f);
            
+           transform.DOScale(new Vector3(0,0,0),5.5f);
            // 上記の処理と同時に鳥をまたDoTweenで画面外に飛ばす
            transform.DOLocalMove(new Vector3(72f,-24f,33f), 5.5f)
                     .SetEase(Ease.Linear);

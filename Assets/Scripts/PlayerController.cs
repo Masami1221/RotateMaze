@@ -35,11 +35,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("pick up the letter");
             Destroy(get.gameObject);
             letterUI.SetActive(true);
-            //クリックしたら非表示にする
-            if (Input.GetMouseButtonDown(0))
-            {
-                letterUI.SetActive(false);
-            }
+            
         }
     }
     
@@ -59,6 +55,12 @@ public class PlayerController : MonoBehaviour
                 _agent.SetDestination(_targetPos);
             }
         }
+        //クリックしたら非表示にする
+            if (Input.GetMouseButtonDown(0))
+            {
+                letterUI.SetActive(false);
+                
+            }
     }
     public bool getItem()
     {

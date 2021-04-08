@@ -56,16 +56,16 @@ public class bridgeController : MonoBehaviour
         {
             //3.持っていたらオブジェクトを動かす
             Debug.Log("Go ahead");
-            this.part1.transform.DOLocalMove(new Vector3(0.157f,0.096f, -4.496f), 1f);
-            this.part1.transform.DOScale(new Vector3(2f,4f,2f),1f); //元の大きさにする。
-            this.part2.transform.DOLocalMove(new Vector3(0.197f,0.096f, -4.496f), 1.3f);
-            this.part2.transform.DOScale(new Vector3(2f,4f,2f),1.3f);
-            this.part3.transform.DOLocalMove(new Vector3(0.237f,0.096f, -4.496f), 1.6f);
-            this.part3.transform.DOScale(new Vector3(2f,4f,2f),1.6f);
-            this.part4.transform.DOLocalMove(new Vector3(0.277f,0.096f, -4.496f), 1.9f);
-            this.part4.transform.DOScale(new Vector3(2f,4f,2f),1.9f);
-            this.part5.transform.DOLocalMove(new Vector3(0.317f,0.096f, -4.496f), 2.2f);
-            this.part5.transform.DOScale(new Vector3(2f,4f,2f),2.2f);
+            this.part1.transform.DOLocalMove(new Vector3(0.0327f,0, 0), 1f);
+            this.part1.transform.DOScale(new Vector3(2.31f,1f,1f),1f); //元の大きさにする。
+            this.part2.transform.DOLocalMove(new Vector3(0.079f,0, 0), 1.3f);
+            this.part2.transform.DOScale(new Vector3(2.31f,1f,1f),1.3f);
+            this.part3.transform.DOLocalMove(new Vector3(0.125f,0, 0), 1.6f);
+            this.part3.transform.DOScale(new Vector3(2.31f,1f,1f),1.6f);
+            this.part4.transform.DOLocalMove(new Vector3(0.172f,0, 0), 1.9f);
+            this.part4.transform.DOScale(new Vector3(2.31f,1f,1f),1.9f);
+            this.part5.transform.DOLocalMove(new Vector3(0.218f,0, 0), 2.2f);
+            this.part5.transform.DOScale(new Vector3(2.31f,1f,1f),2.2f);
             //surface.BuildNavMesh();
             
         }
