@@ -46,7 +46,7 @@ public class bridgeController : MonoBehaviour
         //プレイヤーがアイテムを持っているかチェックする
         //1.プレイヤーの情報を取得
         var player = other.gameObject;
-        var playerController = player.GetComponent<PlayerController>();
+        var playerController = player.GetComponent<Player1Controller>();
         if (playerController == null)
         {
             return;
