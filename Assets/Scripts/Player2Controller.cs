@@ -27,6 +27,11 @@ public class Player2Controller : MonoBehaviour
             Destroy(get.gameObject);
             item = true;
         }
+        else if (get.CompareTag("MoveObstacle"))
+        {
+            Debug.Log("playerDetact");
+            _agent.ResetPath();
+        }
         //手紙を拾う処理
         //当たったのがletterだったら
         else if (get.CompareTag ("letter"))
@@ -38,7 +43,6 @@ public class Player2Controller : MonoBehaviour
             
         }
     }
-    
 
     void Update()
     {

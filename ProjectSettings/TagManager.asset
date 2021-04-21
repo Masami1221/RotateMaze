@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - letter
+  - MoveObstacle
   layers:
   - Default
   - TransparentFX
