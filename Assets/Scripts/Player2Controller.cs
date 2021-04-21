@@ -56,14 +56,14 @@ public class Player2Controller : MonoBehaviour
             }
         }
         //クリックしたら非表示にする
-            if (Input.GetMouseButtonDown(0))
-            {
-                letterUI.SetActive(false);
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        letterUI.SetActive(false);
                 
-            }
-    }
-    public bool getItem()
-    {
-        return item;
+        //    }
+    //}
+    //public bool getItem()
+    //{
+    //    return item;
     }
 }
