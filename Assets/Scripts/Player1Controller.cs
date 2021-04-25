@@ -11,6 +11,7 @@ public class Player1Controller : MonoBehaviour
     private NavMeshAgent _agent;
     public bool item;
     public GameObject letterUI;
+    public GameObject hint2UI;
     
     void Start()
     {
@@ -59,6 +60,7 @@ public class Player1Controller : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 letterUI.SetActive(false);
+                hint2UI.SetActive(false);
                 
             }
     }

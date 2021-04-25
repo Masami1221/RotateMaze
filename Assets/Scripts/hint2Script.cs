@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class hint2Script : MonoBehaviour
 {
     public string hint2;
-    //public GameObject speakballoonPref;
+    public GameObject item1Prefab;
     //private GameObject canvas;
     
     public GameObject hint2UI;
+    bool isInstatiateItem = false;
     void Start()
     {
         //canvas = GameObject.Find("Canvas");
@@ -17,22 +18,23 @@ public class hint2Script : MonoBehaviour
     public void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.tag == "Player") {
-            //if (!hint2UI.activeSelf) {
-                //hint2UI = Instantiate(speakballoonPref) as GameObject;
-                //hint2UI.transform.SetParent(canvas.transform, false);
                 hint2UI.SetActive(true);
-                //Text hint2UIText = hint2UI.transform.Find("hint2").GetComponent<Text>();
-                //hint2UIText.text = hint2;
-            //}
+                Debug.Log("item appear");
+                if (isInstatiateItem == false)
+                {
+                    isInstatiateItem = true;
+                    GameObject coin = Instantiate(item1Prefab, new Vector3(-16.2f,1.5f,36.8f), Quaternion.Euler (-90f,0,0), transform.parent) as GameObject;
+                    coin.transform.localPosition = new Vector3(-16.2f,1.5f,36.8f);
+                }
+                
         }
     }        
 
-    void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == "Player") {
-            if (hint2UI) {
-                //Destroy(hint2UI);
-                hint2UI.SetActive(false);
-            }
-        }
-    }        
+    //void OnTriggerExit(Collider other) {
+        //if (other.gameObject.tag == "Player") {
+            //if (hint2UI) {
+               // hint2UI.SetActive(false);
+            //}
+        //}
+    //}        
 }

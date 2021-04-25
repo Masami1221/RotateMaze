@@ -14,8 +14,7 @@ public class bridgeController : MonoBehaviour
     GameObject part4;
     GameObject part5;
     
-    //public GameObject surface;
-    //Gameobject navMeshSurface;
+    public GameObject item1Prefab;
     
     // Start is called before the first frame update
     void Start()
@@ -56,6 +55,8 @@ public class bridgeController : MonoBehaviour
         {
             //3.持っていたらオブジェクトを動かす
             Debug.Log("Go ahead");
+            //アイテムを台座にセットする
+            GameObject coin = Instantiate(item1Prefab, new Vector3(10.73f,-6.54f,-19f), Quaternion.Euler (-90f,0,0), transform.parent) as GameObject;
             this.part1.transform.DOLocalMove(new Vector3(0.0327f,0, 0), 1f);
             this.part1.transform.DOScale(new Vector3(2.31f,1f,1f),1f); //元の大きさにする。
             this.part2.transform.DOLocalMove(new Vector3(0.079f,0, 0), 1.3f);

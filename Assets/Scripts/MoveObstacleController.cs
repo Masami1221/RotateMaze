@@ -27,7 +27,7 @@ public class MoveObstacleController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         // 初期状態はstartPosに移動するようにする
         _targetPos = _startPos;
-        _agent.SetDestination(_startPos);
+        _agent.SetDestination(_targetPos);
     }    
         
     void OnTriggerEnter (Collider collider)
@@ -38,11 +38,11 @@ public class MoveObstacleController : MonoBehaviour
             _agent.ResetPath();
             var player = collider.GetComponent<Player2Controller>();
             // プレイヤーにアイテムを持っているかどうかのフラグと取得する関数を用意しておく
-            // if (player.IsObstacleItem())
-            // {
+             //if (player.IsObstacleItem())
+             //{
                 // _isUseItem = true;
-                // _agent.SetDestination(_useItemPos);
-            // }
+                 //_agent.SetDestination(_useItemPos);
+             //}
         }
     }
 

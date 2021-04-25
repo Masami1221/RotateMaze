@@ -22,7 +22,7 @@ public class Player2Controller : MonoBehaviour
         
     void OnTriggerEnter (Collider get)
     {
-        if (get.CompareTag ("Item"))
+        if (get.CompareTag ("flower1"))
         {
             Destroy(get.gameObject);
             item = true;
@@ -66,8 +66,8 @@ public class Player2Controller : MonoBehaviour
                 
         //    }
     //}
-    //public bool getItem()
+    //public bool IsObstacleItem()
     //{
-    //    return item;
+        //return item;
     }
 }
