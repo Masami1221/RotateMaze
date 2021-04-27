@@ -8,6 +8,8 @@ TagManager:
   - letter
   - MoveObstacle
   - flower1
+  - dummy
+  - flower2
   layers:
   - Default
   - TransparentFX

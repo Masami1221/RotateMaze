@@ -9,7 +9,8 @@ public class Player2Controller : MonoBehaviour
     private float _rayRange;
     private Vector3 _targetPos;
     private NavMeshAgent _agent;
-    public bool item;
+    public bool item1;
+    public bool item2;
     public GameObject letterUI;
     
     void Start()
@@ -21,12 +22,26 @@ public class Player2Controller : MonoBehaviour
     }    
         
     void OnTriggerEnter (Collider get)
-    {
+    {   
+        //1つ目のアイテムの花を取得する
         if (get.CompareTag ("flower1"))
         {
             Destroy(get.gameObject);
-            item = true;
+            item1 = true;
         }
+        //2つ目のアイテムを取得する
+        else if (get.CompareTag("flower2"))
+        {
+            Destroy(get.gameObject);
+            item2 = true;
+        }
+        //ダミーの花を取得する
+        else if (get.CompareTag("dummy"))
+        {
+            Destroy(get.gameObject);
+            Debug.Log("dummy flower");
+        }
+
         else if (get.CompareTag("MoveObstacle"))
         {
             Debug.Log("playerDetact");
@@ -65,9 +80,13 @@ public class Player2Controller : MonoBehaviour
         //        letterUI.SetActive(false);
                 
         //    }
-    //}
-    //public bool IsObstacleItem()
-    //{
-        //return item;
+    }
+    public bool IsObstacleItem1()
+    {
+        return item1;
+    }
+    public bool IsObstacleItem2()
+    {
+        return item2;
     }
 }

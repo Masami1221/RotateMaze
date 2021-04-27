@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class MoveObstacleController : MonoBehaviour
+public class MoveObstacleController2 : MonoBehaviour
 {
     // 最初に移動する始点
     [SerializeField]
@@ -38,7 +38,7 @@ public class MoveObstacleController : MonoBehaviour
             _agent.ResetPath();
             var player = collider.GetComponent<Player2Controller>();
             // プレイヤーにアイテムを持っているかどうかのフラグと取得する関数を用意しておく
-             if (player.IsObstacleItem1())
+             if (player.IsObstacleItem2())
              {
                  _isUseItem = true;
                  _agent.SetDestination(_useItemPos);

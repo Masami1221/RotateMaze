@@ -23,6 +23,7 @@ public class Player1Controller : MonoBehaviour
         
     void OnTriggerEnter (Collider get)
     {
+        //アイテムを拾ったらアイテムを消す処理を一度だけする
         if (get.CompareTag ("Item"))
         {
             Destroy(get.gameObject);
