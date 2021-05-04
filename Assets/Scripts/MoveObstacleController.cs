@@ -16,14 +16,18 @@ public class MoveObstacleController : MonoBehaviour
     [SerializeField]
     private Vector3 _useItemPos;
     private NavMeshAgent _agent;
+    private NavMeshObstacle _obstacle;
     // 次に移動する場所
     private Vector3 _targetPos;
     // 次に移動する場所がstartPosかendPosかどうかのフラグ
     bool _isToStart = true;
     // アイテム使用されているか
     bool _isUseItem = false;
+    //吹き出しのUI
+    public GameObject flower1UI;
     void Start()
     {
+        _obstacle = GetComponent<NavMeshObstacle>();        
         _agent = GetComponent<NavMeshAgent>();
         // 初期状態はstartPosに移動するようにする
         _targetPos = _startPos;
@@ -35,6 +39,8 @@ public class MoveObstacleController : MonoBehaviour
         //当たったプレイヤーがアイテムを持っていたら移動する
         if (collider.CompareTag ("Player"))
         {
+            _agent.enabled = false;
+            _obstacle.enabled = true;
             _agent.ResetPath();
             var player = collider.GetComponent<Player2Controller>();
             // プレイヤーにアイテムを持っているかどうかのフラグと取得する関数を用意しておく
@@ -42,6 +48,7 @@ public class MoveObstacleController : MonoBehaviour
              {
                  _isUseItem = true;
                  _agent.SetDestination(_useItemPos);
+                 //flower1UI.SetActive(false);
              }
         }
     }
@@ -49,8 +56,14 @@ public class MoveObstacleController : MonoBehaviour
     void OnTriggerExit (Collider collider)
     {
         Debug.Log("exit");
+        if (_isUseItem)
+        {
+            return;
+        }
         if (collider.CompareTag ("Player"))
         {
+            _agent.enabled = true;
+            _obstacle.enabled = false;
             if (_isToStart)
             {
                 _targetPos = _startPos;

@@ -28,12 +28,15 @@ public class Player2Controller : MonoBehaviour
         {
             Destroy(get.gameObject);
             item1 = true;
+            //効果音再生
+            GetComponent<AudioSource>().Play();
         }
         //2つ目のアイテムを取得する
         else if (get.CompareTag("flower2"))
         {
             Destroy(get.gameObject);
             item2 = true;
+            GetComponent<AudioSource>().Play();
         }
         //ダミーの花を取得する
         else if (get.CompareTag("dummy"))
@@ -75,11 +78,11 @@ public class Player2Controller : MonoBehaviour
             }
         }
         //クリックしたら非表示にする
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        letterUI.SetActive(false);
+            if (Input.GetMouseButtonDown(0))
+            {
+                letterUI.SetActive(false);
                 
-        //    }
+            }
     }
     public bool IsObstacleItem1()
     {

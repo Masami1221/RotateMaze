@@ -25,6 +25,7 @@ public class hint2Script : MonoBehaviour
                     isInstatiateItem = true;
                     GameObject coin = Instantiate(item1Prefab, new Vector3(-16.2f,1.5f,36.8f), Quaternion.Euler (-90f,0,0), transform.parent) as GameObject;
                     coin.transform.localPosition = new Vector3(-16.2f,1.5f,36.8f);
+                    GetComponent<AudioSource>().Play();
                 }
                 
         }

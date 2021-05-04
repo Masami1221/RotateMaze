@@ -12,6 +12,7 @@ public class Player1Controller : MonoBehaviour
     public bool item;
     public GameObject letterUI;
     public GameObject hint2UI;
+    bool isCalledDestroy = false;
     
     void Start()
     {
@@ -23,19 +24,26 @@ public class Player1Controller : MonoBehaviour
         
     void OnTriggerEnter (Collider get)
     {
-        //アイテムを拾ったらアイテムを消す処理を一度だけする
-        if (get.CompareTag ("Item"))
-        {
-            Destroy(get.gameObject);
-            item = true;
+        //拾ったアイテムを一度だけ消す処理
+        if (!isCalledDestroy){
+            if (get.CompareTag ("Item"))
+            {
+                Destroy(get.gameObject);
+                item = true;
+                isCalledDestroy = true;
+                //効果音再生
+                GetComponent<AudioSource>().Play();
+            }
         }
+        
         //手紙を拾う処理
         //当たったのがletterだったら
-        else if (get.CompareTag ("letter"))
+        if (get.CompareTag ("letter"))
         {
             //letterを消して、UIを表示する
             Debug.Log("pick up the letter");
             Destroy(get.gameObject);
+            GetComponent<AudioSource>().Play();
             letterUI.SetActive(true);
             
         }

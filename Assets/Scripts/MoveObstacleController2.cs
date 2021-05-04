@@ -49,6 +49,10 @@ public class MoveObstacleController2 : MonoBehaviour
     void OnTriggerExit (Collider collider)
     {
         Debug.Log("exit");
+        if (_isUseItem)
+        {
+            return;
+        }
         if (collider.CompareTag ("Player"))
         {
             if (_isToStart)
