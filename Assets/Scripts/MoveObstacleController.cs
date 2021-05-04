@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class MoveObstacleController : MonoBehaviour
 {
@@ -36,16 +37,21 @@ public class MoveObstacleController : MonoBehaviour
         
     void OnTriggerEnter (Collider collider)
     {
+        if (_isUseItem)
+        {
+            return;
+        }
         //当たったプレイヤーがアイテムを持っていたら移動する
         if (collider.CompareTag ("Player"))
         {
             _agent.enabled = false;
             _obstacle.enabled = true;
-            _agent.ResetPath();
             var player = collider.GetComponent<Player2Controller>();
             // プレイヤーにアイテムを持っているかどうかのフラグと取得する関数を用意しておく
              if (player.IsObstacleItem1())
              {
+                 _agent.enabled = true;
+                 _obstacle.enabled = false;
                  _isUseItem = true;
                  _agent.SetDestination(_useItemPos);
                  //flower1UI.SetActive(false);
@@ -62,18 +68,24 @@ public class MoveObstacleController : MonoBehaviour
         }
         if (collider.CompareTag ("Player"))
         {
-            _agent.enabled = true;
             _obstacle.enabled = false;
-            if (_isToStart)
-            {
-                _targetPos = _startPos;
-            }
-            else
-            {
-                _targetPos = _endPos;
-            }
-            _agent.SetDestination(_targetPos);
+            LateTarget();
         }
+    }
+
+    async void LateTarget()
+    {
+        await Task.Delay(100);
+        _agent.enabled = true;
+        if (_isToStart)
+        {
+            _targetPos = _startPos;
+        }
+        else
+        {
+            _targetPos = _endPos;
+        }
+        _agent.SetDestination(_targetPos);
     }
 
     void Update()
