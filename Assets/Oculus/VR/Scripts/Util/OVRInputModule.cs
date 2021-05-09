@@ -588,6 +588,7 @@ namespace UnityEngine.EventSystems
         /// <returns></returns>
         virtual protected MouseState GetGazePointerData()
         {
+            Debug.Log("hoge");
             // Get the OVRRayPointerEventData reference
             OVRPointerEventData leftData;
             GetPointerData(kMouseLeftId, out leftData, true );
@@ -632,6 +633,7 @@ namespace UnityEngine.EventSystems
             OVRPhysicsRaycaster physicsRaycaster = raycast.module as OVRPhysicsRaycaster;
             if (physicsRaycaster)
             {
+                Debug.Log("hoge2");
                 Vector3 position =  raycast.worldPosition;
 
                 if (performSphereCastForGazepointer)
