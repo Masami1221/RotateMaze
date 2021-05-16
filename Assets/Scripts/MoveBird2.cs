@@ -12,7 +12,7 @@ public class MoveBird2 : MonoBehaviour
         // まずは手紙を落とす位置まで鳥をdotweenで動かす その位置を入れる
         transform.DOScale(new Vector3(0,0,0),0);//小さくしておいて、元の大きさに戻す
         transform.DOScale(new Vector3(0.05f,0.05f,0.05f),0.5f);
-        transform.DOLocalMove(new Vector3(-0.5f,8.0f,-2.8f), 1.5f)
+        transform.DOLocalMove(new Vector3(-0.5f,8.0f,-2.8f), 2f)
                  .SetEase(Ease.Linear)
                  //移動に緩急つけない
         .OnComplete(() => {
@@ -25,7 +25,7 @@ public class MoveBird2 : MonoBehaviour
            
            transform.DOScale(new Vector3(0,0,0),5.5f);
            // 上記の処理と同時に鳥をまたDoTweenで画面外に飛ばす
-           transform.DOLocalMove(new Vector3(6.5f,6.0f,-2.8f), 1.5f)
+           transform.DOLocalMove(new Vector3(6.5f,6.0f,-2.8f), 2f)
                     .SetEase(Ease.Linear);
         });
          

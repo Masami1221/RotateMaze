@@ -58,7 +58,7 @@ public class Player2Controller : MonoBehaviour
             Debug.Log("pick up the letter");
             Destroy(get.gameObject);
             letterUI.SetActive(true);
-            
+            GetComponent<AudioSource>().Play();
         }
     }
 

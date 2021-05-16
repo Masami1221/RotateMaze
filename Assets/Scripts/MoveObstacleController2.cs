@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class MoveObstacleController2 : MonoBehaviour
 {
@@ -16,14 +17,17 @@ public class MoveObstacleController2 : MonoBehaviour
     [SerializeField]
     private Vector3 _useItemPos;
     private NavMeshAgent _agent;
+    private NavMeshObstacle _obstacle;
     // 次に移動する場所
     private Vector3 _targetPos;
     // 次に移動する場所がstartPosかendPosかどうかのフラグ
     bool _isToStart = true;
     // アイテム使用されているか
     bool _isUseItem = false;
+    public GameObject flower2UI;
     void Start()
     {
+        _obstacle = GetComponent<NavMeshObstacle>();
         _agent = GetComponent<NavMeshAgent>();
         // 初期状態はstartPosに移動するようにする
         _targetPos = _startPos;
@@ -41,30 +45,42 @@ public class MoveObstacleController2 : MonoBehaviour
              if (player.IsObstacleItem2())
              {
                  _isUseItem = true;
+                 _obstacle.enabled = false;
+                 _isUseItem = true;
                  _agent.SetDestination(_useItemPos);
+                 flower2UI.SetActive(false);
+                 GetComponent<AudioSource>().Play();
              }
         }
     }
 
     void OnTriggerExit (Collider collider)
     {
-        Debug.Log("exit");
+       Debug.Log("exit");
         if (_isUseItem)
         {
             return;
         }
         if (collider.CompareTag ("Player"))
         {
-            if (_isToStart)
-            {
-                _targetPos = _startPos;
-            }
-            else
-            {
-                _targetPos = _endPos;
-            }
-            _agent.SetDestination(_targetPos);
+            _obstacle.enabled = false;
+            LateTarget();
         }
+    }
+
+    async void LateTarget()
+    {
+        await Task.Delay(100);
+        _agent.enabled = true;
+        if (_isToStart)
+        {
+            _targetPos = _startPos;
+        }
+        else
+        {
+            _targetPos = _endPos;
+        }
+        _agent.SetDestination(_targetPos);
     }
 
     void Update()
