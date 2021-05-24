@@ -17,6 +17,7 @@ public class MoveObstacleController : MonoBehaviour
     [SerializeField]
     private Vector3 _useItemPos;
     private NavMeshAgent _agent;
+    private AM1.Nav.NavController _navController;
     private NavMeshObstacle _obstacle;
     // 次に移動する場所
     private Vector3 _targetPos;
@@ -30,9 +31,11 @@ public class MoveObstacleController : MonoBehaviour
     {
         _obstacle = GetComponent<NavMeshObstacle>();        
         _agent = GetComponent<NavMeshAgent>();
+        _navController = GetComponent<AM1.Nav.NavController>();
         // 初期状態はstartPosに移動するようにする
         _targetPos = _startPos;
-        _agent.SetDestination(_targetPos);
+        // _agent.SetDestination(_targetPos);
+        _navController.SetDestination(_targetPos);
     }    
         
     void OnTriggerEnter (Collider collider)
@@ -53,8 +56,10 @@ public class MoveObstacleController : MonoBehaviour
                  _agent.enabled = true;
                  _obstacle.enabled = false;
                  _isUseItem = true;
-                 _agent.SetDestination(_useItemPos);
-                 //flower1UI.SetActive(false);
+                 //_agent.SetDestination(_useItemPos);
+                 _navController.SetDestination(_useItemPos);
+                 flower1UI.SetActive(false);
+                 GetComponent<AudioSource>().Play();
              }
         }
     }
@@ -85,7 +90,8 @@ public class MoveObstacleController : MonoBehaviour
         {
             _targetPos = _endPos;
         }
-        _agent.SetDestination(_targetPos);
+        //_agent.SetDestination(_targetPos);
+        _navController.SetDestination(_targetPos);
     }
 
     void Update()
@@ -96,7 +102,8 @@ public class MoveObstacleController : MonoBehaviour
             return;
         }
         // ターゲットの位置まで1以内になれば新しい位置に移動する
-        if (Vector3.Distance(transform.position, _targetPos) < 0.1f)
+        //if (Vector3.Distance(transform.position, _targetPos) < 0.1f)
+        if (_navController.IsReached)
         {
             if (_isToStart)
             {
@@ -106,7 +113,8 @@ public class MoveObstacleController : MonoBehaviour
                 _isToStart = true;
                 _targetPos = _startPos;
             }
-            _agent.SetDestination(_targetPos);
+            //_agent.SetDestination(_targetPos);
+            _navController.SetDestination(_targetPos);
         }
     }
 }

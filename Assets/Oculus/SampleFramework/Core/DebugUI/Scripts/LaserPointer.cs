@@ -3,7 +3,7 @@
 Copyright (c) Facebook Technologies, LLC and its affiliates. All rights reserved.  
 
 See SampleFramework license.txt for license terms.  Unless required by applicable law 
-or agreed to in writing, the sample code is provided “AS IS” WITHOUT WARRANTIES OR 
+or agreed to in writing, the sample code is provided ï¿½AS ISï¿½ WITHOUT WARRANTIES OR 
 CONDITIONS OF ANY KIND, either express or implied.  See the license for specific 
 language governing permissions and limitations under the license.
 
@@ -55,6 +55,10 @@ public class LaserPointer : OVRCursor
     private bool _hitTarget;
     private LineRenderer lineRenderer;
 
+    public Vector3 GetEndPoint() {return _endPoint;}
+    public Vector3 GetStartPoint() {return _startPoint;}
+    public Vector3 GetForward() {return _forward;}
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -69,6 +73,7 @@ public class LaserPointer : OVRCursor
 
     public override void SetCursorStartDest(Vector3 start, Vector3 dest, Vector3 normal)
     {
+        Debug.Log("hoge dest");
         _startPoint = start;
         _endPoint = dest;
         _hitTarget = true;

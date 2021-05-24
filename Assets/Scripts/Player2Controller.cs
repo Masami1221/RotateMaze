@@ -12,13 +12,14 @@ public class Player2Controller : MonoBehaviour
     public bool item1;
     public bool item2;
     public GameObject letterUI;
-    
+    private AM1.Nav.NavController _navControlller;
     void Start()
     {
         _rayRange = 1000;
         _targetPos = transform.position;
         _agent = GetComponent<NavMeshAgent>();
         //_agent.SetDegstination(_targetPos);
+        _navControlller = GetComponent<AM1.Nav.NavController>();
     }    
         
     void OnTriggerEnter (Collider get)
@@ -74,7 +75,8 @@ public class Player2Controller : MonoBehaviour
             {
                 Debug.Log("hit");
                 _targetPos= hit.point;
-                _agent.SetDestination(_targetPos);
+                //_agent.SetDestination(_targetPos);
+                _navControlller.SetDestination(_targetPos);
             }
         }
         //クリックしたら非表示にする

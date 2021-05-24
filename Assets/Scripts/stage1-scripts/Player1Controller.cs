@@ -73,6 +73,12 @@ public class Player1Controller : MonoBehaviour
                 
             }
     }
+
+    public void SetTargetPos(Vector3 targetPos)
+    {
+        _targetPos = targetPos;
+        _agent.SetDestination(_targetPos);
+    }
     public bool getItem()
     {
         return item;
