@@ -47,6 +47,7 @@ public class MoveObstacleController2 : MonoBehaviour
         if (collider.CompareTag ("Player"))
         {
             _agent.enabled = false;
+            _navController.enabled = false;
             _obstacle.enabled = true;
             var player = collider.GetComponent<Player2Controller>();
             // プレイヤーにアイテムを持っているかどうかのフラグと取得する関数を用意しておく
@@ -81,6 +82,7 @@ public class MoveObstacleController2 : MonoBehaviour
     {
         await Task.Delay(100);
         _agent.enabled = true;
+        _navController.enabled = true;
         if (_isToStart)
         {
             _targetPos = _startPos;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GoalScript : MonoBehaviour
+public class Goal1Script : MonoBehaviour
 {
     public GameObject player;
     public GameObject levelClear;

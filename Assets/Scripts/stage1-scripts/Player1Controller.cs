@@ -12,7 +12,11 @@ public class Player1Controller : MonoBehaviour
     public bool item;
     public GameObject letterUI;
     public GameObject hint2UI;
+    private AM1.Nav.NavController _navController;
+    Animator player_Animator;
+    bool player_walk;
     bool isCalledDestroy = false;
+    
     
     void Start()
     {
@@ -20,6 +24,9 @@ public class Player1Controller : MonoBehaviour
         _targetPos = transform.position;
         _agent = GetComponent<NavMeshAgent>();
         //_agent.SetDegstination(_targetPos);
+        _navController = GetComponent<AM1.Nav.NavController>();
+        player_Animator = gameObject.GetComponent<Animator>();
+        player_walk = false;
     }    
         
     void OnTriggerEnter (Collider get)
@@ -62,15 +69,24 @@ public class Player1Controller : MonoBehaviour
             {
                 Debug.Log("hit");
                 _targetPos= hit.point;
-                _agent.SetDestination(_targetPos);
+                //_agent.SetDestination(_targetPos);
+                _navController.SetDestination(_targetPos);
+                //移動を開始する時、アニメーションをwalkにする
+                player_walk = true;
+                if (player_walk == true)
+                player_Animator.SetBool("move", true);
             }
+        }
+        //目的に到着したらアニメーションをidleにする
+        if (_navController.IsReached) 
+        {
+            player_Animator.SetBool("move", false);
         }
         //クリックしたら非表示にする
             if (Input.GetMouseButtonDown(0))
             {
                 letterUI.SetActive(false);
-                hint2UI.SetActive(false);
-                
+                hint2UI.SetActive(false); 
             }
     }
 
